@@ -1,5 +1,5 @@
 - hosts: tag_AnsibleGroup_bastions
   become: true
-  gather_facts: false
+  gather_facts: true
   roles:
    - aws-creds
