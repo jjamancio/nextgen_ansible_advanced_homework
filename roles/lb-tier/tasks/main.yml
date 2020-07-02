@@ -5,11 +5,11 @@
       state: latest
   - name: install HAProxy
     yum:
-      name: {{ payload }}
+      name: "{{ payload }}"
       state: latest
   - name: enable HAProxy
     service:
-      name: {{ payload }}
+      name: "{{ payload }}"
       state: started
   - name: configure haproxy
     template:
@@ -17,5 +17,5 @@
       dest: /etc/haproxy/haproxy.cfg
   - name: restart HAproxy
     service:
-      name: {{ payload }}
+      name: "{{ payload }}"
       state: restarted

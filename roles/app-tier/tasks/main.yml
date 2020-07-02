@@ -1,25 +1,25 @@
 ---
-  - name: install {{ payload }}
+  - name: install "{{ payload }}"
     package:
-      name: {{ payload }}
+      name: "{{ payload }}"
       state: latest
-  - name: enable {{ payload }} at boot
+  - name: enable "{{ payload }}" at boot
     service:
-      name: {{ payload }}
+      name: "{{ payload }}"
       enabled: yes
   
-  - name: create ansible {{ payload }} directory
+  - name: create ansible "{{ payload }}" directory
     file:
-      path: {{ tomcat_web_root }}
+      path: "{{ tomcat_web_root }}"
       state: directory
   
-  - name: copy static index.html to {{ tomcat_web_root }}/index.html
+  - name: copy static index.html to "{{ tomcat_web_root }}"/index.html
     template:
       src: index.html.j2
-      dest: {{ tomcat_web_root }}/index.html
+      dest: "{{ tomcat_web_root }}"/index.html
       mode: 0644
   
-  - name: start {{ payload }}
+  - name: start "{{ payload }}"
     service:
-      name: {{ payload }}
+      name: "{{ payload }}"
       state: started
