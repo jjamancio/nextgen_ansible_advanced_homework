@@ -1,0 +1,4 @@
+---
+# tasks file for aws-creds
+ - include_tasks: tower_cli.yml
+ - include_tasks: job_template.yml

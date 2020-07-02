@@ -1,0 +1,22 @@
+---
+# vars file for aws-creds
+org_name: Default
+proj_name: "00_Homework Assignment"
+tower_username: admin
+tower_password: r3dh4t1!
+tower_verify_ssl: no
+user_cred_name: ec2-user
+credential: "Creds for AWS instances"
+
+templates:
+  prod_job:
+    name: "09_3 tier app on Prod"
+    playbook: site-3tier-app.yml
+    state: present
+    job_type: run
+
+  prod_smoke_job:
+    name: "10_Smoke test Prod env"
+    playbook: site-smoketest-aws.yml
+    state: present
+    job_type: run

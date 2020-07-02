@@ -1,0 +1,30 @@
+- name: Install required packages
+  yum:
+    name:
+    - python
+    - python-pip
+    - python-devel
+    - gcc
+    state: latest
+
+- name: Install tower-cli
+  pip:
+   name: ansible-tower-cli
+   state: latest
+
+- name: List key files
+  shell: (cd /root/.ssh; find . -maxdepth 1 -type f -iname '*key.pem')| cut -d'/' -f2
+  register: file_to_copy
+
+- name: Tower Creds key file
+  tower_credential:
+    name: "{{ credential }}"
+    organization: "{{ org_name }}"
+    state: present
+    kind: ssh
+    tower_host: "tower1.{{ tower_guid }}.example.opentlc.com"
+    tower_username: "{{ tower_username }}"
+    tower_password: "{{ tower_password }}"
+    tower_verify_ssl: "{{ tower_verify_ssl }}"
+    ssh_key_data: "/root/.ssh/{{ file_to_copy.stdout }}"
+    username: "{{ user_cred_name }}"
