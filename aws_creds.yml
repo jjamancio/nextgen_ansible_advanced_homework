@@ -63,3 +63,4 @@
         job_type: run
         playbook: site-smoketest-aws.yml
         project: "00_Homework Assignment"
+# comment for commit comments correction only
